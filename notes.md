@@ -56,6 +56,11 @@
 -   plugins :
     -   htmlwebpackplugin => injects bundled js file into index.html and places that html file in build folder (you do not have to specify it yourself)
 
+## Add a start script
+
+-   `"start": "webpack serve --config webpack/webpack.config.js --open"`
+-   specify path of webpack config file and `--open`to automate browser open upon start
+
 ### Questions for later :
 
 -   what is react
