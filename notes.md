@@ -2,44 +2,44 @@
 
 ## Basic setup (folder structure, git, npm)
 
--   git init
+-   `git init`
 -   Source code => /src
 -   Bundled code => /build
 -   Add /build in gitignore
--   npm init
+-   `npm init`
 -   Create src/index.html with a root div to mount React app
 -   Add /node_modules to gitignore
 
 ## Essential Dependencies
 
--   yarn add react, react-dom
--   yarn add -D typescript @types/react @types/react-dom
+-   `yarn add react, react-dom`
+-   `yarn add -D typescript @types/react @types/react-dom`
 
 ## Typescript Compiler config (tsconfig.json)
 
--   compilerOptions focus on typechecking and not code transpilation. Babel’s the transpiler
+-   `compilerOptions` focus on typechecking and not code transpilation. Babel’s the transpiler
 
 ## Setting up entry points
 
--   add App.tsx in /src (where you React App code resides)
--   add index.tsx in /src (entry point for you React App)
+-   add `App.tsx` in /src (where you React App code resides)
+-   add `index.tsx` in /src (entry point for you React App)
     -   reference mount point
     -   if no mount point, throw err
-    -   instantiate root => React.createRoot(mountPoint)
-    -   render root => root.render(<React.StrictMode> <App />)
+    -   instantiate root => `React.createRoot(mountPoint)`
+    -   render root => `root.render(<React.StrictMode> <App />)`
 
 ## Transpiling code (Babel)
 
 -   The code written so far cannot be understood by the browser as it is. Babel will transpile the typescript and react code into js code that the browser can understand.
 -   install babel and plugins as dev dependency :
-    -   yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime
--   add babel config file => .babelrc
+    -   `yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime`
+-   add babel config file => `.babelrc`
 
 ## Bundling the code (Webpack)
 
 -   the bundled code is then referenced in the index.html file
--   install webpack related packages as dev dependencies => yarn add -D webpack webpack-cli webpack-dev-server html-webpack-plugin
--   install babel-loader package which allows transpiling js files using babel and webpack => yarn add -D babel-loader
+-   install webpack related packages as dev dependencies => `yarn add -D webpack webpack-cli webpack-dev-server html-webpack-plugin`
+-   install babel-loader package which allows transpiling js files using babel and webpack => `yarn add -D babel-loader`
 -   add /webpack/webpack.config.js
 
 ## webpack.config.js
@@ -121,3 +121,9 @@ plugins: [
 ### Running a build
 
 -   go to build folder and run `npx serve`
+
+## React Refresh
+
+-   In order to preserve app state after the webpack server has rebuilt the package following code modifications, a react refresh plugin is necessary. Otherwise the browser reloads the entier page, and state is set back to initial values.
+-   `yarn add -D @pmmmwh/react-refresh-webpack-plugin react-refresh`
+-   inside `webpack.dev.js` require react refresh and add it to plugins.
