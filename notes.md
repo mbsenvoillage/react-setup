@@ -32,7 +32,7 @@
 
 -   The code written so far cannot be understood by the browser as it is. Babel will transpile the typescript and react code into js code that the browser can understand.
 -   install babel and plugins as dev dependency :
-    -   yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
+    -   yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime
 -   add babel config file => .babelrc
 
 ## Bundling the code (Webpack)
