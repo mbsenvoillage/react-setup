@@ -61,18 +61,63 @@
 -   `"start": "webpack serve --config webpack/webpack.config.js --open"`
 -   specify path of webpack config file and `--open`to automate browser open upon start
 
-### Questions for later :
+## Bundling CSS
 
--   what is react
--   what is a framework
--   what is prettier
--   what is a linter
--   what is babel
--   what is webpack
--   what does the react library contain
--   what does the react-dom library contain
--   why do you need types for librairies ? only need them if you’re using typescript
+-   add css file to src and import it in App.tsx
+-   to process css files, webpack needs loaders. Once installed wbepack is instructed to use those files for every css file it encounters
+-   `yarn add -D css-loader style-loader`
+-   in webpack config file add instructions in module rules
+    -   test for css extension
+    -   use style-loader and css-loader
 
-### TODO :
+```js
+{
+    test: /\.css$/,
+    use: ['style-loader', 'css-loader'],
+},
+```
 
--   learn more about tsconfig.json
+## Dealing with images
+
+-   if you import an image in App.tsx you get the following error :
+    -   `Cannot find module './react.png' or its corresponding type declarations.`
+-   to fix the problem, add a `declarations.d.ts` file in the src folder
+-   edit the file and add `declare module '*.png'` or the same for svg
+-   with webpack 4 you had to include specific loaders for media types. With webpack 5, you do not have to. The type 'asset/resource' or 'asset/inline' does the job for you.
+-   'asset/inline' also handles font formats
+-   in webpack config file add instructions in module rules
+    -   test for image extensions
+    -   add type
+
+```js
+{
+    test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+    type: 'asset/resource',
+},
+```
+
+## Multi environment builds
+
+-   create a `webpack.common.js` where resides the common config for all environments
+-   `webpack.prod.js` and `webpack.dev.js` hold the config for dev and prod environments
+-   `webpack.config.js` merges the commonn config with the specific env config chosen at build time
+-   edit start script in `package.json` to include the environment variable env : `--env env=dev`
+-   add a build command
+
+### Creating custom env variables with webpack
+
+-   require webpack
+-   add plugin property (which takes an array)
+-   instantiate a webpack DefinePlugin :
+
+```js
+plugins: [
+    new webpack.DefinePlugin({
+        'process.env.name': JSON.stringify('Name you want to pass'),
+    }),
+]
+```
+
+### Running a build
+
+-   go to build folder and run `npx serve`
