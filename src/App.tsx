@@ -1,9 +1,10 @@
+import { ReactElement } from 'react'
 import './styles.css'
 import IMAGE from './react.png'
 import LOGO from './logo.svg'
 import Counter from './Counter'
 
-const App = () => {
+const App = (): ReactElement => {
     return (
         <>
             <h1>React Setup Course</h1>

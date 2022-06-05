@@ -127,3 +127,19 @@ plugins: [
 -   In order to preserve app state after the webpack server has rebuilt the package following code modifications, a react refresh plugin is necessary. Otherwise the browser reloads the entier page, and state is set back to initial values.
 -   `yarn add -D @pmmmwh/react-refresh-webpack-plugin react-refresh`
 -   inside `webpack.dev.js` require react refresh and add it to plugins.
+
+## Linting
+
+- eslint needs to be installed plus types and plugins to support it :
+```bash
+yarn add -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-plugin-jsx-a11y
+yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
+- configuration is defined inside `.eslintrc`
+    - specify parser to be used
+    - specify ecma version to parse ecma script features
+    - specify what rules are extended
+    - add custom rules
+    - set react detection to automatic
+
+- add lint script in package.json

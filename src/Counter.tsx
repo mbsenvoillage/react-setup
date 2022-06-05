@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 
-export default function Counter() {
+export default function Counter(): ReactElement {
     const [counter, setCounter] = useState<number>(0)
 
     return (

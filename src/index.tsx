@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 
-let mountPoint = document.getElementById('root')
+const mountPoint = document.getElementById('root')
 
 if (!mountPoint) {
     throw new Error('No mount point found in index.html')

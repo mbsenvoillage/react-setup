@@ -1,0 +1,6 @@
+{
+    "eslint.workingDirectories": [
+      "/Users/yvonmomboisse/Documents/Code/JS/React/react-setup" 
+    ],
+    "eslint.nodePath": "/Users/yvonmomboisse/Documents/Code/JS/React/react-setup/node_modules"
+  }
